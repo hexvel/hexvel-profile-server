@@ -26,7 +26,7 @@ app.get("/api/login", (req, res) => {
 				token: data.access_token,
 				user_id: data.user_id,
 			};
-			fetch("http://127.0.0.1:80/api/user/create?" + new URLSearchParams(query))
+			fetch("http://185.104.249.204:3436/api/user/create?" + new URLSearchParams(query))
 				.then((res) => res.json())
 				.then((data) => {
 					console.log(data);
