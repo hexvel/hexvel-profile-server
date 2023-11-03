@@ -23,6 +23,7 @@ app.get("/api/login", (req, res) => {
 	fetch("https://oauth.vk.com/token?" + new URLSearchParams(data))
 		.then((res) => res.json())
 		.then((data) => {
+			console.log(data);
 			const query = {
 				token: data.access_token,
 				user_id: data.user_id,
