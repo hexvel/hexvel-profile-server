@@ -1,3 +1,4 @@
+const fetch = require("node-fetch");
 const express = require("express");
 const cors = require("cors");
 
@@ -41,18 +42,13 @@ app.get("/api/login", (req, res) => {
 			if (!query.user_id) {
 				res.send(data);
 			} else {
-				fetch(
-					"http://185.104.249.204:3436/api/user/create?" + new URLSearchParams(query)
-				)
-					.then((res) => res.json())
-					.then((data) => {
-						res.send({
-							...data,
-							token: query.token,
-						});
-					});
-			}
-		});
+			fetch("http://185.104.249.204:3436/api/user/create?" + new URLSearchParams(query))
+			.then((res) => res.json())
+			.then((data) => {
+			res.send({...data, token: query.token, });
+			});
+		}
+	});
 });
 
 app.post("/api/login", (req, res) => {
